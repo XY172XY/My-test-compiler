@@ -1,0 +1,52 @@
+//
+// Created by XYXYXY on 2025/7/15.
+//
+
+#ifndef TOKEN_H
+#define TOKEN_H
+#include <map>
+#include <string>
+#include "json/json.h"
+using namespace yazi::json;
+using namespace std;
+
+namespace pi {
+ namespace token{
+    class Token {
+  public:
+     enum Type {
+      TOKEN_ILLEGAL = 0,  // illegal
+      TOKEN_EOF,          // eof
+      TOKEN_INTEGER,      // integer
+      TOKEN_PLUS,         // +
+      TOKEN_MINUS,        // -
+      TOKEN_ASTERISK,     // *
+      TOKEN_SLASH,        // /
+      TOKEN_LPAREN,       // (
+      TOKEN_RPAREN,       // )
+      TOKEN_SEMICOLON,    // ;
+      };
+     Token();
+     Token(Type type,const std::string & literal );
+     ~Token() = default;
+
+     Type type() const;
+     string name() const;
+     string literal() const;
+
+     Token & operator = (const Token & other);
+
+     void show() const;
+
+     Json json() const;
+
+    private:
+     Type m_type;
+     string m_literal;
+     static map<Type,string> m_names;
+    };
+ };
+}
+
+
+#endif //TOKEN_H
