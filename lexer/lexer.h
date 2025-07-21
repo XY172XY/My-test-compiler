@@ -7,7 +7,7 @@
 
 
 #include "token/token.h"
-#include<fstream>
+#include <fstream>
 #include <sstream>
 #include <iostream>
 using namespace pi::token;

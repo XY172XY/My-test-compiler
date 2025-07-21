@@ -27,7 +27,7 @@ namespace pi {
       TOKEN_SEMICOLON,    // ;
       };
      Token();
-     Token(Type type,const std::string & literal );
+     Token(Type type,const string & literal );
      ~Token() = default;
 
      Type type() const;

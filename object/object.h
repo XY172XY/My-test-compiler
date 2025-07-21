@@ -1,0 +1,45 @@
+//
+// Created by XYXYXY on 25-7-21.
+//
+
+#ifndef PI_OBJECT_H
+#define PI_OBJECT_H
+
+#include <map>
+#include <string>
+#include <memory>
+#include <stdarg.h>
+using namespace std;
+
+namespace pi{
+    namespace object{
+        class Object {
+        public:
+            enum Type{
+                OBJECT_ERROR = 0,
+                OBJECT_INTEGER,
+            };
+
+
+        public:
+            Object(){};
+            Object(Type type) : m_type(type){};
+            virtual ~Object(){};
+
+            Type type() const {return m_type;};
+            std::string name() const;
+            virtual std::string str() const = 0;
+
+            static shared_ptr<Object> new_error(const char * format,...);
+            static shared_ptr<Object> new_intger(int64_t value);
+
+        protected:
+            Type m_type;
+            static std::map<Type,std::string> m_names;
+        };
+    }
+}
+
+
+
+#endif //PI_OBJECT_H
