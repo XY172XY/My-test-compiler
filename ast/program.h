@@ -12,7 +12,7 @@ namespace pi{
     namespace ast{
         class Program : public Statement {
         public:
-            Program() : Statement(){};
+            Program() : Statement(NODE_PROGRAM){};
             Program(Type type) : Statement(type){};
             ~Program(){};
 

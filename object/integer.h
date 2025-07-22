@@ -2,13 +2,13 @@
 // Created by XYXYXY on 25-7-21.
 //
 
-#ifndef PI_INTEGER_H
-#define PI_INTEGER_H
+#ifndef PI_OBJECT_INTEGER_H
+#define PI_OBJECT_INTEGER_H
 #include"object/object.h"
 using namespace pi::object;
 
 namespace pi{
-    namespace {
+    namespace object{
         class Integer : public Object{
         public:
             Integer() : Object(OBJECT_INTEGER),m_value(0){};
@@ -27,4 +27,4 @@ namespace pi{
 
 
 
-#endif //PI_INTEGER_H
+#endif //PI_OBJECT_INTEGER_H

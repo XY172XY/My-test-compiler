@@ -22,7 +22,7 @@ std::string Object::name() const{
 };
 
 shared_ptr<Object> Object::new_error(const char * format,...){
-    char buf[1024];
+    char buf[1024] = {0};
     va_list arg_prt;
     va_start(arg_prt,format);
     vsnprintf(buf,sizeof(buf),format,arg_prt);

@@ -11,7 +11,7 @@ namespace pi{
     namespace ast{
         class Infix : public Expression{
         public:
-            Infix() : Expression(){};
+            Infix() : Expression(NODE_INFIX){};
             Infix(Type type) : Expression(NODE_INFIX){};
             ~Infix(){};
 

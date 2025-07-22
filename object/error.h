@@ -2,8 +2,8 @@
 // Created by XYXYXY on 25-7-21.
 //
 
-#ifndef PI_ERROR_H
-#define PI_ERROR_H
+#ifndef PI_OBJECT_ERROR_H
+#define PI_OBJECT_ERROR_H
 
 
 
@@ -29,4 +29,4 @@ namespace pi{
 }
 
 
-#endif //PI_ERROR_H
+#endif //PI_OBJECT_ERROR_H
