@@ -23,6 +23,13 @@ Lexer::Lexer(const string& file) {
 
 } ;
 
+Lexer::Lexer(const char * buf,int len) {
+    m_ch = 0;
+    m_next_pos = 0;
+    m_pos = 0;
+    m_input.assign(buf,len);
+}
+
 Token Lexer::next_token() {
     read_char();
     skip_white_space();
@@ -46,6 +53,11 @@ Token Lexer::next_token() {
             string literal;
             literal += m_ch;
             return new_token(Token::TOKEN_SLASH, literal);
+        }
+        case '%': {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_MODULO, literal);
         }
         case '(': {
             string literal;

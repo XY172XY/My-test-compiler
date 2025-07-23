@@ -9,18 +9,21 @@ std::map<Token::Type,int> Parser::m_precedences{
         {Token::TOKEN_PLUS,     SUM},
         {Token::TOKEN_MINUS,    SUM},
         {Token::TOKEN_ASTERISK, PRODUCT},
-        {Token::TOKEN_SLASH,    PRODUCT}
+        {Token::TOKEN_SLASH,    PRODUCT},
+        {Token::TOKEN_MODULO,   PRODUCT},
 };
 
 std::map<Token::Type,Parser::prefix_parse_fn> Parser::m_prefix_parse_fns = {
-        {Token::TOKEN_INTEGER,&Parser::parse_integer},
-        {Token::TOKEN_LPAREN,&Parser::parse_group},
+        {Token::TOKEN_INTEGER,      &Parser::parse_integer},
+        {Token::TOKEN_LPAREN,       &Parser::parse_group},
+        {Token::TOKEN_MINUS,        &Parser::parse_prefix},
 };
 std::map<Token::Type,Parser::infix_parse_fn> Parser::m_infix_parse_fns = {
         {Token::TOKEN_MINUS,&Parser::parse_infix},
         {Token::TOKEN_PLUS,&Parser::parse_infix},
         {Token::TOKEN_SLASH,&Parser::parse_infix},
         {Token::TOKEN_ASTERISK,&Parser::parse_infix},
+        {Token::TOKEN_MODULO,&Parser::parse_infix},
 };
 
 Parser::Parser(){};

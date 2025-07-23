@@ -13,4 +13,5 @@ std::shared_ptr<Object> Evaluator::eval_program(std::list<shared_ptr<ast::Statem
         }
         return result;
     }
+    return result;
 };

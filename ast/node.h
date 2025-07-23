@@ -18,7 +18,8 @@ namespace pi {
                 NODE_INTEGER = 0,
                 NODE_INFIX,
                 NODE_EXPRESSION_STATEMENT,
-                NODE_PROGRAM
+                NODE_PROGRAM,
+                NODE_PREFIX
             };
 
             Node() {};

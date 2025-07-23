@@ -45,7 +45,11 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<Node> & node){
                 return right;
             }
 
-            return eval_integer_infix_expression(s->m_operator,left,right);
+            return eval_infix(s->m_operator,left,right);
+        }
+        case Node::NODE_PREFIX:{
+            auto s = std::dynamic_pointer_cast<ast::Prefix>(node);
+            return eval_prefix(s);
         }
 
         case Node::NODE_EXPRESSION_STATEMENT:{

@@ -22,6 +22,7 @@ namespace pi {
       TOKEN_MINUS,        // -
       TOKEN_ASTERISK,     // *
       TOKEN_SLASH,        // /
+      TOKEN_MODULO,       //%
       TOKEN_LPAREN,       // (
       TOKEN_RPAREN,       // )
       TOKEN_SEMICOLON,    // ;

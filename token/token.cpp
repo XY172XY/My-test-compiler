@@ -13,6 +13,7 @@ std::map<Token::Type,string> Token::m_names = {
     {TOKEN_MINUS,       "-"},
     {TOKEN_ASTERISK,    "*"},
     {TOKEN_SLASH,       "/"},
+    {TOKEN_MODULO,      "%"},
     {TOKEN_LPAREN,      "("},
     {TOKEN_RPAREN,      ")"},
     {TOKEN_SEMICOLON,   ";"},

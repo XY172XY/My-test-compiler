@@ -27,10 +27,14 @@ namespace pi{
             std::shared_ptr<Object> eval_program(std::list<shared_ptr<ast::Statement>> & stmts);
             std::shared_ptr<Object> eval_integer(std::shared_ptr<ast::Integer> & integer);
 
+            //prefix
+            std::shared_ptr<Object> eval_prefix(const std::shared_ptr<Prefix> & node);
+            std::shared_ptr<Object> eval_minus_prefix_expression(const std::shared_ptr<Object> & right);
+
+
             //infix
             std::shared_ptr<Object> eval_infix(const string & op,std::shared_ptr<Object> & left,std::shared_ptr<Object> & right);
             std::shared_ptr<Object> eval_integer_infix_expression(const string & op,std::shared_ptr<Object> & left,std::shared_ptr<Object> & right);
-
 
         };
     }
