@@ -19,8 +19,19 @@ std::shared_ptr<Object> Evaluator::new_error(const char * format,...){
 };
 
 std::shared_ptr<Object> Evaluator::new_integer(int64_t value){
-    return Object::new_intger(value);
+    return Object::new_integer(value);
 };
+
+std::shared_ptr<Object> Evaluator::new_float(double value){
+    return Object::new_float(value);
+};
+
+std::shared_ptr<Object> Evaluator::cast_from_integer_to_float(const std::shared_ptr<Object> & obj){
+    auto i = std::dynamic_pointer_cast<object::Integer>(obj);
+    return new_float(double (i->m_value));
+};
+
+
 
 std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<Node> & node){
     switch(node->m_type){
@@ -28,7 +39,10 @@ std::shared_ptr<Object> Evaluator::eval(const std::shared_ptr<Node> & node){
             auto s = std::dynamic_pointer_cast<ast::Integer>(node);
             return eval_integer(s);
         }
-
+        case Node::NODE_FLOAT:{
+            auto s = std::dynamic_pointer_cast<ast::Float>(node);
+            return eval_float(s);
+        }
         case Node::NODE_PROGRAM:{
             auto s = std::dynamic_pointer_cast<ast::Program>(node);
             return eval_program(s->m_statements);

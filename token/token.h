@@ -18,14 +18,24 @@ namespace pi {
       TOKEN_ILLEGAL = 0,  // illegal
       TOKEN_EOF,          // eof
       TOKEN_INTEGER,      // integer
+      TOKEN_FLOAT,        // float
       TOKEN_PLUS,         // +
       TOKEN_MINUS,        // -
       TOKEN_ASTERISK,     // *
       TOKEN_SLASH,        // /
-      TOKEN_MODULO,       //%
+      TOKEN_MODULO,       // %
+      TOKEN_TIDLE,        // ~
+      TOKEN_BIT_AND,      // &
+      TOKEN_BIT_OR,       // |
+      TOKEN_BIT_XOR,      // ^
+      TOKEN_BIT_LSHIFT,   // <<
+      TOKEN_BIT_RSHIFT,   // >>
       TOKEN_LPAREN,       // (
       TOKEN_RPAREN,       // )
       TOKEN_SEMICOLON,    // ;
+      TOKEN_IDENTIFIER,   // identifier
+      TOKEN_TRUE,         // true
+      TOKEN_FALSE,        // false
       };
      Token();
      Token(Type type,const string & literal );

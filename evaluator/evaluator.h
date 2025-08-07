@@ -22,19 +22,28 @@ namespace pi{
             bool is_error(const shared_ptr<Object> & object);
             std::shared_ptr<Object> new_error(const char * format,...);
             std::shared_ptr<Object> new_integer(int64_t value);
+            std::shared_ptr<Object> new_float(double value);
+            std::shared_ptr<Object> cast_from_integer_to_float(const std::shared_ptr<Object> & obj);
+
 
             std::shared_ptr<Object> eval(const std::shared_ptr<ast::Node> & node);
             std::shared_ptr<Object> eval_program(std::list<shared_ptr<ast::Statement>> & stmts);
-            std::shared_ptr<Object> eval_integer(std::shared_ptr<ast::Integer> & integer);
+            std::shared_ptr<Object> eval_integer(std::shared_ptr<ast::Integer> & node);
+            std::shared_ptr<Object> eval_float(std::shared_ptr<ast::Float> & node);
+
 
             //prefix
             std::shared_ptr<Object> eval_prefix(const std::shared_ptr<Prefix> & node);
             std::shared_ptr<Object> eval_minus_prefix_expression(const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_tidle_prefix_expression(const std::shared_ptr<Object> & right);
+
 
 
             //infix
-            std::shared_ptr<Object> eval_infix(const string & op,std::shared_ptr<Object> & left,std::shared_ptr<Object> & right);
-            std::shared_ptr<Object> eval_integer_infix_expression(const string & op,std::shared_ptr<Object> & left,std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_infix(const string & op,const std::shared_ptr<Object> & left,const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_integer_infix_expression(const string & op,const std::shared_ptr<Object> & left,const std::shared_ptr<Object> & right);
+            std::shared_ptr<Object> eval_float_infix_expression(const string & op,const std::shared_ptr<Object> & left,const std::shared_ptr<Object> & right);
+
 
         };
     }

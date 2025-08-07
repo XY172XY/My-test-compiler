@@ -6,24 +6,35 @@
 using namespace pi::parser;
 
 std::map<Token::Type,int> Parser::m_precedences{
-        {Token::TOKEN_PLUS,     SUM},
-        {Token::TOKEN_MINUS,    SUM},
-        {Token::TOKEN_ASTERISK, PRODUCT},
-        {Token::TOKEN_SLASH,    PRODUCT},
-        {Token::TOKEN_MODULO,   PRODUCT},
+        {Token::TOKEN_PLUS,         SUM},
+        {Token::TOKEN_MINUS,        SUM},
+        {Token::TOKEN_ASTERISK,     PRODUCT},
+        {Token::TOKEN_SLASH,        PRODUCT},
+        {Token::TOKEN_MODULO,       PRODUCT},
+        {Token::TOKEN_BIT_AND,      LOGIC},
+        {Token::TOKEN_BIT_OR,       LOGIC},
+        {Token::TOKEN_BIT_XOR,      LOGIC},
+        {Token::TOKEN_BIT_LSHIFT,   LOGIC},
+        {Token::TOKEN_BIT_RSHIFT,   LOGIC},
 };
-
 std::map<Token::Type,Parser::prefix_parse_fn> Parser::m_prefix_parse_fns = {
         {Token::TOKEN_INTEGER,      &Parser::parse_integer},
+        {Token::TOKEN_FLOAT,        &Parser::parse_float},
         {Token::TOKEN_LPAREN,       &Parser::parse_group},
         {Token::TOKEN_MINUS,        &Parser::parse_prefix},
+        {Token::TOKEN_TIDLE,        &Parser::parse_prefix}
 };
 std::map<Token::Type,Parser::infix_parse_fn> Parser::m_infix_parse_fns = {
-        {Token::TOKEN_MINUS,&Parser::parse_infix},
-        {Token::TOKEN_PLUS,&Parser::parse_infix},
-        {Token::TOKEN_SLASH,&Parser::parse_infix},
-        {Token::TOKEN_ASTERISK,&Parser::parse_infix},
-        {Token::TOKEN_MODULO,&Parser::parse_infix},
+        {Token::TOKEN_MINUS,        &Parser::parse_infix},
+        {Token::TOKEN_PLUS,         &Parser::parse_infix},
+        {Token::TOKEN_SLASH,        &Parser::parse_infix},
+        {Token::TOKEN_ASTERISK,     &Parser::parse_infix},
+        {Token::TOKEN_MODULO,       &Parser::parse_infix},
+        {Token::TOKEN_BIT_AND,      &Parser::parse_infix},
+        {Token::TOKEN_BIT_OR,       &Parser::parse_infix},
+        {Token::TOKEN_BIT_XOR,      &Parser::parse_infix},
+        {Token::TOKEN_BIT_LSHIFT,   &Parser::parse_infix},
+        {Token::TOKEN_BIT_RSHIFT,   &Parser::parse_infix},
 };
 
 Parser::Parser(){};

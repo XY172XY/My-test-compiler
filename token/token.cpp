@@ -9,19 +9,28 @@ std::map<Token::Type,string> Token::m_names = {
     {TOKEN_ILLEGAL,     "illegal"},
     {TOKEN_EOF,         "eof"},
     {TOKEN_INTEGER,     "integer"},
+    {TOKEN_FLOAT,       "float"},
     {TOKEN_PLUS,        "+"},
     {TOKEN_MINUS,       "-"},
     {TOKEN_ASTERISK,    "*"},
     {TOKEN_SLASH,       "/"},
     {TOKEN_MODULO,      "%"},
+    {TOKEN_TIDLE,       "~"},
+    {TOKEN_BIT_AND,     "&"},
+    {TOKEN_BIT_OR,      "|"},
+    {TOKEN_BIT_XOR,     "^"},
+    {TOKEN_BIT_LSHIFT,  "<<"},
+    {TOKEN_BIT_RSHIFT,  ">>"},
     {TOKEN_LPAREN,      "("},
     {TOKEN_RPAREN,      ")"},
     {TOKEN_SEMICOLON,   ";"},
+    {TOKEN_TRUE,        "true"},
+    {TOKEN_FALSE,       "false"},
 };
 
 Token::Token() : m_type(TOKEN_ILLEGAL)  {}
 
-Token::Token(Type type, const std::string &literal) : m_type(type), m_literal(literal) {}
+Token::Token(Type type, const std::string & literal) : m_type(type), m_literal(literal) {}
 
 Token::Type Token::type() const {
     return m_type;

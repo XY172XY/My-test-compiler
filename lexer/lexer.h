@@ -27,6 +27,7 @@ namespace pi {
             private:
                 void skip_white_space();
                 void read_char();
+                char peek_char();
                 void unread_char();
                 bool is_digit(char c);
                 string read_number();

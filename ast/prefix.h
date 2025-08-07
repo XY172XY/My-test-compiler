@@ -18,7 +18,7 @@ namespace pi{
                 Json json;
                 json["type"] = name();
                 json["operator"] = m_operator;
-                json["left"] = m_right->json();
+                json["right"] = m_right->json();
                 return json;
             }
 

@@ -16,6 +16,7 @@ namespace pi {
         public:
             enum Type{
                 NODE_INTEGER = 0,
+                NODE_FLOAT,
                 NODE_INFIX,
                 NODE_EXPRESSION_STATEMENT,
                 NODE_PROGRAM,

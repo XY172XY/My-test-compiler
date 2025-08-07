@@ -16,6 +16,7 @@ namespace pi{
         public:
             enum Precedence{
                 LOWEST = 0,
+                LOGIC,   // & | ^ << >>
                 SUM,     // + -
                 PRODUCT, // * / %
                 PREFIX,  // -a,~a,!a
@@ -27,6 +28,7 @@ namespace pi{
 
             //prefix
             std::shared_ptr<Expression> parse_integer();
+            std::shared_ptr<Expression> parse_float();
             std::shared_ptr<Expression> parse_group();
             std::shared_ptr<Expression> parse_prefix();
 

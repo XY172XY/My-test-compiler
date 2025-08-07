@@ -5,6 +5,8 @@
 #include "object/object.h"
 #include "object/integer.h"
 #include "object/error.h"
+#include "object/float.h"
+
 using namespace pi::object;
 
 
@@ -31,6 +33,11 @@ shared_ptr<Object> Object::new_error(const char * format,...){
 
 };
 
-shared_ptr<Object> Object::new_intger(int64_t value){
+shared_ptr<Object> Object::new_integer(int64_t value){
     return shared_ptr<Integer>(new Integer(value));
 };
+
+shared_ptr<Object> Object::new_float(double value){
+    return shared_ptr<Float>(new Float(value));
+};
+

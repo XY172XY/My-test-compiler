@@ -20,7 +20,6 @@ Lexer::Lexer(const string& file) {
     std::ostringstream oss;
     oss<<ifs.rdbuf();
     m_input = oss.str();
-
 } ;
 
 Lexer::Lexer(const char * buf,int len) {
@@ -59,6 +58,58 @@ Token Lexer::next_token() {
             literal += m_ch;
             return new_token(Token::TOKEN_MODULO, literal);
         }
+        case '~':{
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_TIDLE,literal);
+        }
+        case '&':{
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_BIT_AND,literal);
+        }
+        case '|':{
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_BIT_OR,literal);
+        }
+        case '^':{
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_BIT_XOR,literal);
+        }
+        case '<':{
+            if(peek_char() == '<'){
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_RSHIFT,literal);
+            }
+            else{
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_ILLEGAL,literal);
+            }
+        }
+        case '>':{
+            if(peek_char() == '>'){
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_RSHIFT,literal);
+            }
+            else{
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_ILLEGAL,literal);
+            }
+        }
         case '(': {
             string literal;
             literal += m_ch;
@@ -75,7 +126,15 @@ Token Lexer::next_token() {
         default: {
             if (is_digit(m_ch)) {
                 string integer = read_number();
+//                cout<<m_ch<<is_digit(peek_char())<<endl;
+                if(m_ch == '.' && is_digit(peek_char())){
+                    read_char();
+                    string fraction = read_number();
+                    unread_char();
+                    return new_token(Token::TOKEN_FLOAT,integer + "." + fraction);
+                }
                 unread_char();
+
                 return new_token(Token::TOKEN_INTEGER, integer);
             } else {
                 string literal;
@@ -103,13 +162,22 @@ void Lexer::read_char() {
     m_next_pos++;
 };
 
+char Lexer::peek_char() {
+    if(m_next_pos >= m_input.length()){
+        return 0;
+    }
+    else{
+        return m_input[m_next_pos];
+    }
+}
+
 void Lexer::unread_char(){//回档函数
     m_next_pos = m_pos;
     m_pos--;
 };
 
 bool Lexer::is_digit(char c){
-    return (m_ch >= '0' && m_ch <= '9');
+    return (c >= '0' && c <= '9');
 };
 
 string Lexer::read_number(){

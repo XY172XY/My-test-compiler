@@ -8,5 +8,6 @@
 #include"object/object.h"
 #include"object/integer.h"
 #include"object/error.h"
+#include"object/float.h"
 
 #endif //PI_OBJECT_HEADER_H

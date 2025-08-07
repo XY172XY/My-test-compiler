@@ -13,6 +13,9 @@ std::shared_ptr<Object> Evaluator::eval_prefix(const std::shared_ptr<Prefix> & n
     if(op == "-"){
         return eval_minus_prefix_expression(right);
     }
+    else if(op == "~"){
+        return eval_tidle_prefix_expression(right);
+    }
     else{
         return new_error("unknown operator %s",op.c_str(),right->name().c_str());
     }
@@ -31,4 +34,18 @@ std::shared_ptr<Object> Evaluator::eval_minus_prefix_expression(const std::share
     }
 
 };
+
+std::shared_ptr<Object> Evaluator::eval_tidle_prefix_expression(const std::shared_ptr<Object> & right){
+    switch(right->type()){
+        case Object::OBJECT_INTEGER:{
+            auto o = std::dynamic_pointer_cast<object::Integer>(right);
+            return new_integer(~(o->m_value));
+        }
+
+        default:{
+            return new_error("unknown operator ~%s",right->name().c_str());
+        }
+    }
+};
+
 
