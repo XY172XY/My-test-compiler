@@ -6,13 +6,16 @@
 #include "object/integer.h"
 #include "object/error.h"
 #include "object/float.h"
+#include "object/bool.h"
 
 using namespace pi::object;
 
 
 std::map<Object::Type,string> Object::m_names = {
-        {OBJECT_ERROR,"error"},
-        {OBJECT_INTEGER,"integer"},
+        {OBJECT_ERROR,      "error"},
+        {OBJECT_INTEGER,    "integer"},
+        {OBJECT_FLOAT,      "float"},
+        {OBJECT_BOOL,       "bool"},
 };
 
 std::string Object::name() const{
@@ -40,4 +43,9 @@ shared_ptr<Object> Object::new_integer(int64_t value){
 shared_ptr<Object> Object::new_float(double value){
     return shared_ptr<Float>(new Float(value));
 };
+
+shared_ptr<Object> Object::new_bool(bool value){
+    return shared_ptr<Bool>(new Bool(value));
+};
+
 

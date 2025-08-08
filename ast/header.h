@@ -5,6 +5,7 @@
 #ifndef PI_AST_HEADER_H
 #define PI_AST_HEADER_H
 
+#include"ast/bool.h"
 #include"ast/expression_statement.h"
 #include"ast/float.h"
 #include"ast/infix.h"

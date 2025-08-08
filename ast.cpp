@@ -13,7 +13,10 @@ int main(){
 
     auto program = parser->parse_program();
 
+    cout<<"1"<<endl;
     Json json = program->json();
+
+    cout<<json<<endl;
 
     ofstream ofs("./../ast.json");
     ofs<<json;

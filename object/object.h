@@ -19,6 +19,7 @@ namespace pi{
                 OBJECT_ERROR = 0,
                 OBJECT_INTEGER,
                 OBJECT_FLOAT,
+                OBJECT_BOOL,
             };
 
 
@@ -34,6 +35,7 @@ namespace pi{
             static shared_ptr<Object> new_error(const char * format,...);
             static shared_ptr<Object> new_integer(int64_t value);
             static shared_ptr<Object> new_float(double value);
+            static shared_ptr<Object> new_bool(bool value);
 
         protected:
             Type m_type;

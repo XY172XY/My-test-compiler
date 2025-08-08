@@ -17,6 +17,7 @@ namespace pi{
             enum Precedence{
                 LOWEST = 0,
                 LOGIC,   // & | ^ << >>
+                COMPARE, // < > <= >= == !=
                 SUM,     // + -
                 PRODUCT, // * / %
                 PREFIX,  // -a,~a,!a
@@ -29,9 +30,9 @@ namespace pi{
             //prefix
             std::shared_ptr<Expression> parse_integer();
             std::shared_ptr<Expression> parse_float();
+            std::shared_ptr<Expression> parse_bool();
             std::shared_ptr<Expression> parse_group();
             std::shared_ptr<Expression> parse_prefix();
-
 
             //infix
             std::shared_ptr<Expression> parse_infix(const shared_ptr<Expression> & left);
@@ -41,7 +42,6 @@ namespace pi{
             std::shared_ptr<Program> parse_program();
             std::shared_ptr<Statement> parse_statement();
             std::shared_ptr<ExpressionStatement> parse_expression_statement();
-
 
             //前缀表达式构建函数指针类型定义
             typedef std::shared_ptr<Expression> (Parser::*prefix_parse_fn)();

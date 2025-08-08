@@ -9,9 +9,10 @@ file(GLOB_RECURSE SOURCES "evaluator/*.cpp" "object/*.cpp" "token/*.cpp" "lexer/
 
 add_executable(token ${SOURCES} token.cpp)
 add_executable(ast ${SOURCES} ast.cpp
-        parser/float.cpp
-        object/float.h
-        evaluator/float.cpp)
+        ast/bool.h
+        parser/bool.cpp
+        object/bool.h
+        evaluator/bool.cpp)
 add_executable(eval ${SOURCES} eval.cpp)
 add_executable(eval_repl ${SOURCES} eval_repl.cpp)
 

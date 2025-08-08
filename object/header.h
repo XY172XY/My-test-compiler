@@ -5,6 +5,7 @@
 #ifndef PI_OBJECT_HEADER_H
 #define PI_OBJECT_HEADER_H
 
+#include"object/bool.h"
 #include"object/object.h"
 #include"object/integer.h"
 #include"object/error.h"

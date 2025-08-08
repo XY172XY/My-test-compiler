@@ -65,6 +65,24 @@ std::shared_ptr<Object> Evaluator::eval_integer_infix_expression(const string & 
     if(op == ">>"){
         return new_integer(l->m_value >> r->m_value);
     }
+    if(op == ">"){
+        return new_bool(l->m_value > r->m_value);
+    }
+    if(op == "<"){
+        return new_bool(l->m_value < r->m_value);
+    }
+    if(op == "<="){
+        return new_bool(l->m_value <= r->m_value);
+    }
+    if(op == ">="){
+        return new_bool(l->m_value >= r->m_value);
+    }
+    if(op == "=="){
+        return new_bool(l->m_value == r->m_value);
+    }
+    if(op == "!="){
+        return new_bool(l->m_value != r->m_value);
+    }
     return new_error("unknown operator %s %s %s",left->name().c_str(),op.c_str(),right->name().c_str());
 
 };
@@ -83,6 +101,24 @@ std::shared_ptr<Object> Evaluator::eval_float_infix_expression(const string & op
     }
     if(op == "/"){
         return new_float(l->m_value / r->m_value);
+    }
+    if(op == ">"){
+        return new_bool(l->m_value > r->m_value);
+    }
+    if(op == "<"){
+        return new_bool(l->m_value < r->m_value);
+    }
+    if(op == "<="){
+        return new_bool(l->m_value <= r->m_value);
+    }
+    if(op == ">="){
+        return new_bool(l->m_value >= r->m_value);
+    }
+    if(op == "=="){
+        return new_bool(l->m_value == r->m_value);
+    }
+    if(op == "!="){
+        return new_bool(l->m_value != r->m_value);
     }
     return new_error("unknown operator %s %s %s",left->name().c_str(),op.c_str(),right->name().c_str());
 };

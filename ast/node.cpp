@@ -8,6 +8,7 @@ using namespace pi::ast;
 std::map<Node::Type,std::string> Node::m_names{
         {NODE_INTEGER,               "Integer"},
         {NODE_FLOAT,                 "Float"},
+        {NODE_BOOL,                  "Bool"},
         {NODE_INFIX,                 "Infix"},
         {NODE_EXPRESSION_STATEMENT,  "ExpressionStatement"},
         {NODE_PROGRAM,               "Program"},

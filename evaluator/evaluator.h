@@ -23,6 +23,7 @@ namespace pi{
             std::shared_ptr<Object> new_error(const char * format,...);
             std::shared_ptr<Object> new_integer(int64_t value);
             std::shared_ptr<Object> new_float(double value);
+            std::shared_ptr<Object> new_bool(bool value);
             std::shared_ptr<Object> cast_from_integer_to_float(const std::shared_ptr<Object> & obj);
 
 
@@ -30,6 +31,8 @@ namespace pi{
             std::shared_ptr<Object> eval_program(std::list<shared_ptr<ast::Statement>> & stmts);
             std::shared_ptr<Object> eval_integer(std::shared_ptr<ast::Integer> & node);
             std::shared_ptr<Object> eval_float(std::shared_ptr<ast::Float> & node);
+            std::shared_ptr<Object> eval_bool(std::shared_ptr<ast::Bool> & node);
+
 
 
             //prefix

@@ -30,6 +30,12 @@ namespace pi {
       TOKEN_BIT_XOR,      // ^
       TOKEN_BIT_LSHIFT,   // <<
       TOKEN_BIT_RSHIFT,   // >>
+      TOKEN_LT,           // <
+      TOKEN_GT,           // >
+      TOKEN_LE,           // <=
+      TOKEN_GE,           // >=
+      TOKEN_EQ,           // ==
+      TOKEN_NE,           // !=
       TOKEN_LPAREN,       // (
       TOKEN_RPAREN,       // )
       TOKEN_SEMICOLON,    // ;
@@ -46,15 +52,16 @@ namespace pi {
      string literal() const;
 
      Token & operator = (const Token & other);
+     static Type lookup(const string & identifier);
 
      void show() const;
-
      Json json() const;
 
     private:
      Type m_type;
      string m_literal;
      static map<Type,string> m_names;
+     static map<string,Type> m_keywords;
     };
  };
 }

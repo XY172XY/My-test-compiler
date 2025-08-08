@@ -30,7 +30,10 @@ namespace pi {
                 char peek_char();
                 void unread_char();
                 bool is_digit(char c);
+                bool is_letter(char c);
+
                 string read_number();
+                string read_identifier();
                 Token new_token(Token::Type type,const string& literal);
 
                 string      m_input;
