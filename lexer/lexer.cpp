@@ -96,8 +96,6 @@ Token Lexer::next_token() {
             else{
                 string literal;
                 literal += m_ch;
-                read_char();
-                literal += m_ch;
                 return new_token(Token::TOKEN_LT,literal);
             }
         }
@@ -118,8 +116,6 @@ Token Lexer::next_token() {
             }
             else{
                 string literal;
-                literal += m_ch;
-                read_char();
                 literal += m_ch;
                 return new_token(Token::TOKEN_GT,literal);
             }
