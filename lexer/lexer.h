@@ -34,6 +34,8 @@ namespace pi {
 
                 string read_number();
                 string read_identifier();
+                string read_single_quote_string();
+                string read_double_quote_string();
                 Token new_token(Token::Type type,const string& literal);
 
                 string      m_input;

@@ -21,7 +21,8 @@ namespace pi {
                 NODE_INFIX,
                 NODE_EXPRESSION_STATEMENT,
                 NODE_PROGRAM,
-                NODE_PREFIX
+                NODE_PREFIX,
+                NODE_STRING,
             };
 
             Node() {};

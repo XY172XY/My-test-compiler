@@ -12,7 +12,8 @@ std::map<Node::Type,std::string> Node::m_names{
         {NODE_INFIX,                 "Infix"},
         {NODE_EXPRESSION_STATEMENT,  "ExpressionStatement"},
         {NODE_PROGRAM,               "Program"},
-        {NODE_PREFIX,                "Prefix"}
+        {NODE_PREFIX,                "Prefix"},
+        {NODE_STRING,                "String"},
 };
 
 string Node::name() const{

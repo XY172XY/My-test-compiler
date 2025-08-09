@@ -64,14 +64,32 @@ Token Lexer::next_token() {
             return new_token(Token::TOKEN_TIDLE,literal);
         }
         case '&':{
-            string literal;
-            literal += m_ch;
-            return new_token(Token::TOKEN_BIT_AND,literal);
+            if(peek_char() == '&'){
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_AND,literal);
+            }
+            else{
+                string literal;
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_AND,literal);
+            }
         }
         case '|':{
-            string literal;
-            literal += m_ch;
-            return new_token(Token::TOKEN_BIT_OR,literal);
+            if(peek_char() == '|'){
+                string literal;
+                literal += m_ch;
+                read_char();
+                literal += m_ch;
+                return new_token(Token::TOKEN_OR,literal);
+            }
+            else {
+                string literal;
+                literal += m_ch;
+                return new_token(Token::TOKEN_BIT_OR, literal);
+            }
         }
         case '^':{
             string literal;
@@ -145,7 +163,7 @@ Token Lexer::next_token() {
             else{
                 string literal;
                 literal += m_ch;
-                return new_token(Token::TOKEN_ILLEGAL,literal);
+                return new_token(Token::TOKEN_NOT,literal);
             }
         }
         case '(': {
@@ -157,6 +175,16 @@ Token Lexer::next_token() {
             string literal;
             literal += m_ch;
             return new_token(Token::TOKEN_RPAREN, literal);
+        }
+        case '\'':{
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_STRING,read_single_quote_string());
+        }
+        case '"': {
+            string literal;
+            literal += m_ch;
+            return new_token(Token::TOKEN_STRING, read_double_quote_string());
         }
         case 0: {
             return new_token(Token::TOKEN_EOF, "");
@@ -243,6 +271,64 @@ string Lexer::read_identifier(){
     return m_input.substr(pos,m_pos - pos);
 };
 
+string Lexer::read_single_quote_string(){
+    string str;
+    while(true){
+        read_char();
+        if(m_ch == '\'' || m_ch == 0){
+            break;
+        }
+        else if(m_ch == '\\' && peek_char() == '\''){
+            read_char();
+        }
+        str += m_ch;
+    }
+    return str;
+};
+
+string Lexer::read_double_quote_string(){
+    string str;
+    while(true){
+        read_char();
+        if(m_ch == '\"' || m_ch == 0){
+            break;
+        }
+        else if(m_ch == '\\'){
+            switch(peek_char()){
+                case 'n':{
+                    read_char();
+                    m_ch = '\n';
+                    break;
+                }
+                case 't':{
+                    read_char();
+                    m_ch = '\t';
+                    break;
+                }
+                case 'r':{
+                    read_char();
+                    m_ch = '\r';
+                    break;
+                }
+                case '"':{
+                    read_char();
+                    m_ch = '"';
+                    break;
+                }
+                case '\\':{
+                    read_char();
+                    m_ch = '\\';
+                    break;
+                }
+                default:{
+                    break;
+                }
+            }
+        }
+        str += m_ch;
+    }
+    return str;
+};
 
 Token Lexer::new_token(Token::Type type,const string& literal){
     Token token(type,literal);

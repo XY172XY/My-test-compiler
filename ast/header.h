@@ -13,6 +13,7 @@
 #include"ast/node.h"
 #include"ast/prefix.h"
 #include"ast/program.h"
+#include"ast/string.h"
 
 
 #endif //PI_AST_HEADER_H

@@ -19,6 +19,7 @@ namespace pi {
       TOKEN_EOF,          // eof
       TOKEN_INTEGER,      // integer
       TOKEN_FLOAT,        // float
+      TOKEN_STRING,       // string
       TOKEN_PLUS,         // +
       TOKEN_MINUS,        // -
       TOKEN_ASTERISK,     // *
@@ -36,6 +37,9 @@ namespace pi {
       TOKEN_GE,           // >=
       TOKEN_EQ,           // ==
       TOKEN_NE,           // !=
+      TOKEN_AND,          // &&
+      TOKEN_OR,           // ||
+      TOKEN_NOT,          // !
       TOKEN_LPAREN,       // (
       TOKEN_RPAREN,       // )
       TOKEN_SEMICOLON,    // ;

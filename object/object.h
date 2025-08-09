@@ -20,6 +20,7 @@ namespace pi{
                 OBJECT_INTEGER,
                 OBJECT_FLOAT,
                 OBJECT_BOOL,
+                OBJECT_STRING,
             };
 
 
@@ -36,6 +37,7 @@ namespace pi{
             static shared_ptr<Object> new_integer(int64_t value);
             static shared_ptr<Object> new_float(double value);
             static shared_ptr<Object> new_bool(bool value);
+            static shared_ptr<Object> new_string(const string & value);
 
         protected:
             Type m_type;

@@ -12,7 +12,11 @@ add_executable(ast ${SOURCES} ast.cpp
         ast/bool.h
         parser/bool.cpp
         object/bool.h
-        evaluator/bool.cpp)
+        evaluator/bool.cpp
+        ast/string.h
+        parser/string.cpp
+        object/string.h
+        evaluator/string.cpp)
 add_executable(eval ${SOURCES} eval.cpp)
 add_executable(eval_repl ${SOURCES} eval_repl.cpp)
 
